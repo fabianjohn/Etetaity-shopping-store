@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html_head">
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>[[${pageTitle}]]  Login</title>
+<link rel="icon" type="images/x-icon" href="/images/LOGO JA.jpg" />
+<link rel="stylesheet" type="text/css" th:href="@{/styles_form.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+</head>
+<body>
+	<div th:replace="fragments :: search_menu" /></div>
+	<div th:replace="fragments :: head_menu" /></div>
+	<div th:replace="formpartition :: login_form" /></div>
+
+
+</body>
+</html>

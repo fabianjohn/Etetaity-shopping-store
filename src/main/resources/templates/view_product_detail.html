@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html_head">
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>[[${pageTitle}]]  Errand boy</title>
+<link rel="icon" type="images/x-icon" href="/images/LOGO JA.jpg" />
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+		<div th:replace="fragments :: search_menu" /></div>
+		<div th:replace="fragments :: head_menu" /></div>
+	<div style="text-align:center"><h1>SHOW PRODUCT DETAILS HERE</h1></div>
+    	<div class="home-prod-view"  th:each="obj : ${obj}">
+    	 
+    <img class="sample_view"
+            th:src="@{|/productImage?code=${obj.code}|}" /></a> <br> 
+	  <div> Name:<b><span th:utext="${obj.name}" style="font-style: oblique"></span></b></div><br>
+	  <div> Price: <b><span th:utext="${obj.price}" style="color:red; font-style: oblique"></span></b>	</div> 
+	<div style="color:red; position: absolute; right:500px; border: none; padding: 5px; width: 150px; top: 550px ; background-color:LightGray"><a style="text-decoration: none" th:href="@{|/buyProduct?code=${obj.code}|}"><b>Add to Cart</b></a></div>
+	
+		
+  
+  </div>  
+ 
+  
+ </div><br><br><hr style="margin-top:200px">
+
+</body>
+</html>

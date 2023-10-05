@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html_head">
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>[[${pageTitle}]]  Errand boy</title>
+<link rel="icon" type="images/x-icon" href="/images/LOGO JA.jpg" />
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+		<div th:replace="fragments :: search_menu" /></div>
+		<div th:replace="fragments :: head_menu" /></div>
+		<hr>	
+		<div th:replace="partition :: list_products" /></div>
+		<hr>
+		<div th:replace="fragments :: marq_display" /></div>
+		<hr>
+		<div th:replace="fragments :: footer" /></div>
+		
+
+</body>
+</html>

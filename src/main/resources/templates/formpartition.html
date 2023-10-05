@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
+<head th:fragment="html_head">
+<meta charset="UTF-8">
+<title>[[${pageTitle}]]  Errand boy</title>
+<link rel="stylesheet" type="text/css" th:href="@{/styles_form.css}" />
+</head>
+<body>
+<div th:fragment="login_form">
+	<form action="action_page.php" method="post">
+  		<div class="imgcontainer">
+    	<img src="/images/img_avatar2.jpeg" alt="Avatar" class="avatar" style="width: 60px; height: 60px">
+  		</div>
+
+  		<div class="container">
+    	<label for="uname"><b>Username</b></label>
+    	<input type="text" placeholder="Enter Username" name="uname" required>
+
+    	<label for="psw"><b>Password</b></label>
+    	<input type="password" placeholder="Enter Password" name="psw" required>
+
+    	<button type="submit">Login</button>
+    	<label>
+      	<input type="checkbox" checked="checked" name="remember"> Remember me
+    	</label>
+  	</div>
+
+  	<div class="container" style="background-color:#f1f1f1">
+    	<button type="button" class="cancelbtn">Cancel</button>
+    	<span class="psw">Forgot <a href="#">password?</a></span>
+  	</div>
+</form>
+</div>
+
+<div th:fragment="signup_form">
+	<form action="/action_page.php" style="border:1px solid #ccc" class="form_fill">
+  		<div class="container">
+    	<h1>Sign Up</h1>
+    	<p>Please fill in this form to create an account.</p>
+    	<hr>
+
+    	<label for="email"><b>Email</b></label>
+    	<input type="text" placeholder="Enter Email" name="email" required>
+
+    	<label for="psw"><b>Password</b></label>
+    	<input type="password" placeholder="Enter Password" name="psw" required>
+
+    	<label for="psw-repeat"><b>Repeat Password</b></label>
+    	<input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+    
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+</div>
+<!-- product form -->
+<div th:fragment="product_form">
+	<div class="contact py-sm-5 py-4">
+		<div class="container py-xl-4 py-lg-2">
+		<!-- form -->
+		<form id="form">
+				<div class="contact-grids1 w3agile-6">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 contact-form1 form-group">
+							<label class="col-form-label">Name</label>
+							<input type="text" class="form-control" placeholder="Product Name" id="name" name="name" required="required">
+							<p id="error_name"></p>
+						</div>
+						<div class="col-md-6 col-sm-6 contact-form1 form-group">
+							<label class="col-form-label">Description</label>
+							<textarea class="form-control" placeholder="Product Description" id="description" rows="3" cols="45" name="description" required="required"></textarea>
+							<p id="error_description"></p>
+						</div>
+						<div class="col-md-6 col-sm-6 contact-form1 form-group">
+							<label class="col-form-label">Image</label>
+							<input type="file" class="form-control" placeholder="" name="image" id="image" required="required">
+							<p id="error_file"></p>
+						</div>
+						<div class="col-md-6 col-sm-6 contact-form1 form-group">
+							<label class="col-form-label">Price</label>
+							<input type="text" class="form-control" placeholder="Price" name="price" id="price" required="required">
+							<p id="error_price"></p>
+						</div>
+					</div>
+					
+						<div class="right-w3l col-md-6">
+							<input type="button" id="submit" class="btn btn-primary form-control" value="Submit">
+							<br><br>
+						</div>
+						<a href="/image/show" style="float:left;" class="btn btn-success text-right">Show All</a>
+				</div>
+				<br>
+				<div id="success" class="text-center" style="color:green;"></div>
+				<div id="error" class="text-center" style="color:red;"></div>
+			</form>
+		</div>
+	</div>
+<p class="text-center">
+  	<img src="/images/loader.gif" alt="loader" style="width: 150px;height: 120px;" id="loader">
+</p>
+	<script src="/js/product.js"></script>
+</div>
+
+<!-- Sidebar -->
+<div th:fragment="sidebar_admin">
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Order list</a>
+  <a href="#" class="w3-bar-item w3-button">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+</div>
+
+<!-- Page Content -->
+<div class="w3-teal">
+<div class="side_menu" style="float:left">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()" style="margin-left:0px">☰</button>
+  </div>
+   
+   <div class="menu_log" style="margin-left: 70%" >
+     	<a style="margin-right: 10%">Add new Product</a>
+               <th:block sec:authorize="isAuthenticated()">
+           <!--           Hello
+              <!--         <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a> --
+              &nbsp;|&nbsp;
+              <a th:href="@{/admin/logout}">Logout</a>  -->
+               </th:block>
+      				<th:block >
+            			<a th:href="@{/user/signUp}">SignUp</a>
+        				</th:block> 
+        				 &nbsp;|&nbsp;
+              			<th:block >
+            		<a th:href="@{/admin/login}">Login</a>
+        		</th:block> 
+   			</div>
+  <div class="w3-container">
+    <h1>ADMINISTRATOR</h1>
+  </div>
+</div>
+
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+</div>
+
+</body>
+</html>

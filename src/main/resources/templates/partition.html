@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
+<head th:fragment="html_head">
+<meta charset="UTF-8">
+<title>[[${pageTitle}]]  Errand boy</title>
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+</head>
+<body>
+<!-- Search Product -->
+<div th:fragment="list_search_products">
+		<div class="flex-box" style="text-align:center">
+		<h1>SEARCH PRODUCT DISPLAY HERE</h1>
+      		<div class="home-prod-view" th:each="list : ${list}">
+        
+              <a th:href="@{|/buyProduct?code=${list.code}|}"><img class="product-image"
+               th:src="@{|/productImage?code=${list.code}|}" /></a><br>
+            Name: <span th:utext="${list.name}"></span><br>
+            Price: <span th:utext="${#numbers.formatDecimal(list.price,3,2,'COMMA')}"></span>
+            <h5><a th:href="@{|/productDetail?code=${list.code}&name=${list.name}&price=${list.price} |}">See Detail</a></h5>
+            
+            <!--    <a th:href="@{|/buyProduct?code=${product.code}|}">Buy Now</a>  -->
+            
+            
+            </div>
+          </div>  
+
+</div>
+
+<!-- List product -->
+<div th:fragment="list_products">
+		<div class="flex-box" style="text-align:center">
+		<h1>LIST PRODUCT DISPLAY HERE</h1>
+      		<div class="home-prod-view" th:each="list : ${list}">
+        
+              <a th:href="@{|/buyProduct?code=${list.code}|}"><img class="product-image"
+               th:src="@{|/productImage?code=${list.code}|}" /></a><br>
+            Name: <span th:utext="${list.name}"></span><br>
+            Price: <span th:utext="${#numbers.formatDecimal(list.price,3,2,'COMMA')}"></span>
+            <h5><a th:href="@{|/productDetail?code=${list.code}&name=${list.name}&price=${list.price} |}">See Detail</a></h5>
+            
+            <!--    <a th:href="@{|/buyProduct?code=${product.code}|}">Buy Now</a>  -->
+            
+            
+            </div>
+          </div>  
+
+</div>
+
+</body>
+</html>
